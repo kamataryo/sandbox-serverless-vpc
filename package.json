@@ -6,7 +6,8 @@
   "author": "kamataryo <mugil.cephalus+Ciconia.local@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "deploy": "sls deploy"
+    "deploy": "sls deploy",
+    "remove": "sls remove"
   },
   "devDependencies": {
     "serverless": "^1.67.0"

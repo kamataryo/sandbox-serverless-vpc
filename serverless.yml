@@ -7,6 +7,13 @@ provider:
   region: ap-northeast-1
   environment:
     HELLO: world
+  vpc:
+    securityGroupIds:
+      - Ref: MySecurityGroup
+    subnetIds:
+      - Ref: MySubnet
+  tags:
+    stage: test
 
 package:
   exclude:
@@ -21,6 +28,39 @@ package:
     - package-lock.json
     - yarn.lock
     - README.md
+
+resources:
+  Resources:
+    MyVPC:
+      Type: AWS::EC2::VPC
+      Properties:
+        CidrBlock: 10.0.0.0/16
+        EnableDnsSupport: true
+        Tags:
+          - Key: stage
+            Value: test
+
+    MySubnet:
+      Type: AWS::EC2::Subnet
+      Properties:
+        AvailabilityZone: ap-northeast-1a
+        VpcId:
+          Ref: MyVPC
+        CidrBlock: 10.0.0.0/24
+        Tags:
+          - Key: stage
+            Value: test
+
+    MySecurityGroup:
+      Type: AWS::EC2::SecurityGroup
+      Properties:
+        GroupName: my-security-group
+        GroupDescription: for test
+        VpcId:
+          Ref: MyVPC
+        Tags:
+          - Key: stage
+            Value: test
 
 functions:
   hello:
