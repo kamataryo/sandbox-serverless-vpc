@@ -1,0 +1,14 @@
+{
+  "name": "sandbox-serverless-vpc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kamataryo/sandbox-serverless-vpc.git",
+  "author": "kamataryo <mugil.cephalus+Ciconia.local@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "sls deploy"
+  },
+  "devDependencies": {
+    "serverless": "^1.67.0"
+  }
+}
